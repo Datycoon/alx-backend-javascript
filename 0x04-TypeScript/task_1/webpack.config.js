@@ -1,7 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const ForkTsCheckerWebPackPlugin = require('fork-ts-checker-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = {
   entry: "./js/main.ts",
@@ -9,11 +9,11 @@ module.exports = {
   module: {
     rules: [
       {
-	test: /\.tsx?$/,
-	loader: 'ts-loader',
-	options: {
-	  transpileOnly: true
-	}
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        options: {
+          transpileOnly: true
+        }
       }
     ]
   },
@@ -35,3 +35,4 @@ module.exports = {
     path: path.resolve(__dirname, "dist")
   }
 };
+
