@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
-    "sourceMap": true,
-    "nonImplicitAny": true,
-    "module": "es6",
     "target": "es5",
-    "allowJs": true,
-    "moduleResolution": "node"
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true
   }
 }
+
