@@ -1,22 +1,31 @@
-const http = require('http');
+const fs = require('fs');
 
-const PORT = 1245;
-const HOST = 'localhost';
-const app = http.createServer();
+function countStudents(path) {
+    let content;
 
-app.on('request', (_, res) => {
-  const responseText = 'Hello Holberton School!';
+    try {
+        content = fs.readFileSync(path, 'utf8');
+    } catch (err) {
+        throw new Error('Cannot load the database');
+    }
 
-  res.setHeader('Content-Type', 'text/plain');
-  res.setHeader('Content-Length', responseText.length);
-  res.statusCode = 200;
-  res.write(responseText); // Removed Buffer.from()
-  res.end(); // Added to end the response
-});
+    content = content.split('\r\n').filter(Boolean); // Split and remove empty lines
+    let students = content.map(item => item.split(','));
 
-app.listen(PORT, HOST, () => {
-  process.stdout.write(`Server listening at -> http://${HOST}:${PORT}\n`);
-});
+    const NUMBER_OF_STUDENTS = students.length - 1; // Exclude header line
+    console.log(`Number of students: ${NUMBER_OF_STUDENTS}`);
 
-module.exports = app;
+    const fields = {};
+    for (let i = 1; i < students.length; i++) { // Start from index 1 to skip header line
+        const [firstname, lastname, age, field] = students[i];
+        if (!fields[field]) fields[field] = [];
+        fields[field].push(firstname);
+    }
+
+    for (const key of Object.keys(fields)) {
+        console.log(`Number of students in ${key}: ${fields[key].length}. List: ${fields[key].join(', ')}`);
+    }
+}
+
+module.exports = countStudents;
 
