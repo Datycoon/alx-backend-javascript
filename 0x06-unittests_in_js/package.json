@@ -13,11 +13,11 @@
       "eslint": "^6.4.0",
       "eslint-config-airbnb-base": "^14.0.0",
       "eslint-plugin-import": "^2.18.2",
-      "eslint-plugin-jest": "^22.17.0",
-      "sinon": "^9.2.3"
+      "eslint-plugin-jest": "^22.17.0"
    },
    "devDependencies": {
       "chai": "^4.4.1",
-      "mocha": "^8.4.0"
+      "mocha": "^8.4.0",
+      "sinon": "^9.2.4"
    }
 }
